@@ -14,6 +14,7 @@ Usage:
  $('selector').stickWith( {top: 20} ); 
  //Selected elements must be absolutely positioned before stickWith is called
 
+See a demo: http://www.eecs.tufts.edu/~asamps01/stickwith/demo.html
 
 TODO: Resizing the window is not handled at all. The element will jump
   sideways as you scroll past the place where it should switch to absolute
