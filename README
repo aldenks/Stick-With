@@ -1,0 +1,21 @@
+Stick With takes absolutely positioned elements and changes them to 
+  fixed position elements before they are about to scroll off the top
+  of the page. When the user scrolls back up they become absolutely
+  positioned again.
+  
+  This has the effect of the element scrolling with the page until it
+  "bumps" up against the top of the viewport. It stays there until
+  the page comes back down and grabs the element again.
+
+Options: top - (optional) the minimum number of pixels the element should
+               stay away from the top of the viewport. default: 0.
+
+Usage:
+ $('selector').stickWith( {top: 20} ); 
+ //Selected elements must be absolutely positioned before stickWith is called
+
+
+TODO: Resizing the window is not handled at all. The element will jump
+  sideways as you scroll past the place where it should switch to absolute
+  positioning.
+
