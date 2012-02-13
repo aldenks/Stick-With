@@ -2,7 +2,8 @@
 <html>
    <head>
       <title>Fixed Scroll Test</title>
-      <script src="../jquery-1.6.2.js" type="text/javascript" charset="utf-8"></script>
+      <script src="../jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+      <script src="jquery.stickwith.js" type="text/javascript" charset="utf-8"></script>
       <style type="text/css" media="screen">
          #header {
             height:100px;
@@ -23,54 +24,15 @@
          #sidebar {
            position: absolute;
            width: 190px;
-           height: 50px;
+           height: 300px;
            background-color: grey;
            right: 10px;
-           bottom: 40px;
          }
       </style>
       <script type="text/javascript" charset="utf-8">
-         (function ( $ ) {
-            $.fn.stickWith = function ( options ) {
-               
-               var settings = {
-                  top: 0,
-               }
-               if ( options ) { 
-                 $.extend( settings, options );
-               }
-               
-	       return this.each(function () {
-                  var $this    = $( this );
-                  var $window  = $( window );
-
-                  var swapPos  = $this.offset().top - settings.top; 
-                  var fixed    = false;
-                  var fixedCSS = {position: 'fixed',
-                                  top:       settings.top,
-				  left:      $this.offset().left };
-		  var absoluteCSS = {position: 'absolute',
-		                     top:      $this.css('top'),
-				     left:     $this.css('left'),
-                                     right:    $this.css('right'),
-                                     bottom:   $this.css('bottom') }; 
-
-                  $window.scroll(function () { //called often, must be efficient 
-                     var shouldBeFixed = $window.scrollTop() > swapPos;
-                     if (shouldBeFixed && !fixed) {
-                        fixed = true;
-                        $this.css(fixedCSS);
-                     } else if (!shouldBeFixed && fixed) {
-                        fixed = false;
-                        $this.css(absoluteCSS);
-                     }
-                  })
-               })
-            };
-	 })( jQuery );
            
-         jQuery(function () {
-            $("#sidebar").stickWith({top:40});
+         $(function () {
+            $("#sidebar").stickWith({top: 20});
          });
       </script>
    </head>
@@ -79,11 +41,9 @@
          <div id="header">
             <h1>Header</h1>
          </div>
-<div style="position: relative; top: 300px;">
          <div id="sidebar">
             sidebarr
          </div>
-</div>
          <div id="content">
             <p>Blah blah blah, blah blah blah, Blah blah blah, blah blah blah, Blah blah blah, blah blah blah, Blah blah blah, blah blah blah.Blah blah blah, blah blah blah, Blah blah blah, blah blah blah, Blah blah blah, blah blah blah, Blah blah blah, blah blah blah. Blah blah blah, blah blah blah, Blah blah blah, blah blah blah, Blah blah blah, blah blah blah, Blah blah blah, blah blah blah. Blah blah blah, blah blah blah, Blah blah blah, blah blah blah, Blah blah blah, blah blah blah, Blah blah blah, blah blah blah. Blah blah blah, blah blah blah, Blah blah blah, blah blah blah, Blah blah blah, blah blah blah, Blah blah blah, blah blah blah. 
             </p>
